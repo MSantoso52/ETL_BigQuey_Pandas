@@ -1,4 +1,4 @@
-# ETL_BigQuey_Pandas
+# ETL_BigQuery_Pandas
 Building an ETL Pipeline for CO2 Emission Data Analysis Using BigQuery and Python
 ![Project Screesnshot](pics/project_flow.png)
 
