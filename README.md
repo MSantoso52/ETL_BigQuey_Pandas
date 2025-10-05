@@ -34,12 +34,38 @@ To follow along this project need to available on system:
 
 # *Project Flow*
 1. Extract CSV file into pandas
+   ```python
+   try:
+        data = pd.read_csv(file_path)
+        print(f"Successfully extract '{file_path}' into Data Frame")
+        return data
+
+    except Exception as e:
+        print(f"Unexpected Error occured: {e}")
+        return None
+   ```
 2. Transform, data cleansing using pandas
+   ```python
+    # Rename columns for consistency
+    raw.columns = ['location', 'percent_global_total', 'fossil_emissions_2023', 'fossil_emissions_2000', 'percent_change_from_2000']
+
+    # Clean 'percent_global_total': remove '%' and convert to float
+    raw['percent_global_total'] = raw['percent_global_total'].str.replace('%', '', regex=False).astype(float)
+
+    # Clean fossil emissions columns: remove commas and convert to float
+    raw['fossil_emissions_2023'] = raw['fossil_emissions_2023'].str.replace(',', '', regex=False).astype(float)
+    raw['fossil_emissions_2000'] = pd.to_numeric(raw['fossil_emissions_2000'].str.replace(',', '', regex=False), errors='coerce')
+   ```
 3. Load data into BigQuery table
    * Define schema for BigQuery table
+     ```python
+     ```
    * Create table if doesn't exists
+     ```python
+     ```
    * Insert transformed data into rows
-4. Query & Veriry
+     ```python
+     ```
+5. Query & Veriry
    * Run simple SQL query on BigQuery Studio
-   * Ensure the data integrity
-   * 
+   * Ensure the data integrity 
