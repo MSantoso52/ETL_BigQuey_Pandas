@@ -59,9 +59,27 @@ To follow along this project need to available on system:
 3. Load data into BigQuery table
    * Define schema for BigQuery table
      ```python
+     # Full table reference
+      table_ref = f'{project_id}.{dataset_id}.{table_id}'
+
+     # Define schema
+      schema = [
+        bigquery.SchemaField('location', 'STRING', mode='REQUIRED'),
+        bigquery.SchemaField('percent_global_total', 'FLOAT', mode='NULLABLE'),
+        bigquery.SchemaField('fossil_emissions_2023', 'FLOAT', mode='NULLABLE'),
+        bigquery.SchemaField('fossil_emissions_2000', 'FLOAT', mode='NULLABLE'),
+        bigquery.SchemaField('percent_change_from_2000', 'FLOAT', mode='NULLABLE'),
+      ]
      ```
    * Create table if doesn't exists
      ```python
+      # Create table if it doesn't exist
+      try:
+        client.get_table(table_ref)
+      except NotFound:
+        table = bigquery.Table(table_ref, schema=schema)
+        client.create_table(table)
+        print(f"Created table {table_ref}")
      ```
    * Insert transformed data into rows
      ```python
