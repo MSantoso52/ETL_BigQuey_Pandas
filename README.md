@@ -91,7 +91,7 @@ To follow along this project need to available on system:
       print(f"Loaded {len(df)} rows to {table_ref}")
      ```
 5. Query & Veriry
-   * Run simple SQL query on BigQuery Studio
+   * Run a simple SQL query in Python to verify the data was loaded correctly.
      ```python
      client = bigquery.Client(project=project_id)
      query = f"""
