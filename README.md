@@ -83,7 +83,22 @@ To follow along this project need to available on system:
      ```
    * Insert transformed data into rows
      ```python
+     # Load DataFrame to BigQuery
+      job_config = bigquery.LoadJobConfig(schema=schema, write_disposition='WRITE_APPEND')
+      job = client.load_table_from_dataframe(df, table_ref, job_config=job_config)
+      job.result()  # Wait for job to complete
+      print(f"Loaded {len(df)} rows to {table_ref}")
      ```
 5. Query & Veriry
    * Run simple SQL query on BigQuery Studio
+     ```python
+     client = bigquery.Client(project=project_id)
+     query = f"""
+     SELECT * FROM `{project_id}.{dataset_id}.{table_id}`
+     LIMIT 10
+     """
+     results = client.query(query).to_dataframe()
+     print("Latest 5 records:")
+     print(results)
+     ```
    * Ensure the data integrity 
