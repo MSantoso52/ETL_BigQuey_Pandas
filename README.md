@@ -21,10 +21,10 @@ To follow along this project need to available on system:
   # Initialize the gcloud CLI
   gcloud init
   ```
-  # This command will:
-  1. Launch a browser window for you to log in with your Google Cloud account.
-  2. Set up your default project.
-  3. Configure your default compute region/zone (if applicable).
+  This command will:
+  * Launch a browser window for you to log in with your Google Cloud account.
+  * Set up your default project.
+  * Configure your default compute region/zone (if applicable).
   You are now ready to use the gcloud command-line tool.
   
 * Python library to interact with Google Cloud
