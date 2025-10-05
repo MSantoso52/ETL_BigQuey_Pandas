@@ -33,3 +33,13 @@ To follow along this project need to available on system:
   ```
 
 # *Project Flow*
+1. Extract CSV file into pandas
+2. Transform, data cleansing using pandas
+3. Load data into BigQuery table
+   * Define schema for BigQuery table
+   * Create table if doesn't exists
+   * Insert transformed data into rows
+4. Query & Veriry
+   * Run simple SQL query on BigQuery Studio
+   * Ensure the data integrity
+   * 
